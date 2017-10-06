@@ -27,8 +27,8 @@
     "eslint-plugin-prettier": "2.1.x",
     "eslint-plugin-react": "7.x.x",
     "extract-text-webpack-plugin": "^1.0.1",
-    "prettier": "^1.5.3",
     "postcss-loader": "^1.2.1",
+    "prettier": "^1.5.3",
     "shelljs": "^0.7.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
@@ -36,10 +36,11 @@
     "webpack-httpolyglot-server": "^0.2.0"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-redux": "^4.3.0",
-    "redux": "^3.2.1",
-    "redux-thunk": "^2.0.1"
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   }
 }

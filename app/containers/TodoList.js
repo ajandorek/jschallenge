@@ -1,25 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import style from './App.css';
-import TodoList from './TodoList';
 
-
-class App extends React.Component {
+class TodoList extends Component {
   render() {
     const { swagger } = this.props;
   
     return (
       <div className={style.App}>
-        <h1>Todo List</h1>
-        <TodoList />
+        <h2>Todo List Component</h2>
+        
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { swagger: state.swagger };
+  return { weather: state.weather };
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(TodoList);
