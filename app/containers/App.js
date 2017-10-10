@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import style from './App.css';
-import TodoList from './TodoList';
+import Todo from './Todo';
+import TodoForm from './TodoForm';
 
 
 class App extends React.Component {
@@ -12,7 +13,8 @@ class App extends React.Component {
     return (
       <div className={style.App}>
         <h1>Todo List</h1>
-        <TodoList />
+        <TodoForm />
+        <Todo />
       </div>
     );
   }

@@ -1,8 +1,8 @@
-import { REQUEST_TODOS, RECEIVE_TODOS } from '../actions/actions.js';
+import { REQUEST_TODOS, RECEIVE_TODOS, FETCH_TODOS } from '../actions/actions.js';
 
 export default function( state = {
     isFetching: false,
-    data: null
+    response: null
 }, action) {
     switch (action.type) {
     case REQUEST_TODOS:
@@ -12,8 +12,18 @@ export default function( state = {
     case RECEIVE_TODOS:
         return Object.assign({}, state, {
             isFetching: false,
-            data: action.payload
+            response: action.payload
         })
     }
     return state;
 }
+
+// export default function(state = [], action) {
+//     console.log(state);
+//     switch (action.type) {
+//     case FETCH_TODOS: 
+//         return [ action.payload.data, ...state ];
+//     }
+    
+//     return state;
+// }

@@ -17,7 +17,6 @@ export function receiveTodos(data) {
     }
 }
 
-export const FETCH_TODOS = 'FETCH_TODOS';
 export function fetchTodos() {
     return function (dispatch) {
         dispatch(requestTodos());
@@ -26,10 +25,20 @@ export function fetchTodos() {
                 if (response.status >= 400) {
                     dispatch('Unable to grab todos');
                 }
-                return response.json();
+                return response;
             })
             .then(data => {
-                dispatch(receiveWeather(data))
+                dispatch(receiveTodos(data))
             });
+    }
+}
+
+export const CREATE_POST = 'CREATE_POST';
+export function createTodo() {
+    const request = axios.post(ROOT_URL);
+
+    return {
+        type: CREATE_POST,
+        payload: request
     }
 }
