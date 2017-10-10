@@ -33,12 +33,12 @@ export function fetchTodos() {
     }
 }
 
-export const CREATE_POST = 'CREATE_POST';
-export function createTodo() {
-    const request = axios.post(ROOT_URL);
+export const CREATE_TODO = 'CREATE_TODO';
+export function createTodo(props) {
+    const request = axios.post(ROOT_URL, props);
 
     return {
-        type: CREATE_POST,
+        type: CREATE_TODO,
         payload: request
     }
 }

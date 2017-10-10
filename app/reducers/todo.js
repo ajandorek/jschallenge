@@ -17,13 +17,3 @@ export default function( state = {
     }
     return state;
 }
-
-// export default function(state = [], action) {
-//     console.log(state);
-//     switch (action.type) {
-//     case FETCH_TODOS: 
-//         return [ action.payload.data, ...state ];
-//     }
-    
-//     return state;
-// }

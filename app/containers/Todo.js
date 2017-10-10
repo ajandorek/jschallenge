@@ -25,7 +25,6 @@ class Todo extends Component {
 
         return (
             <div className={style.App}>
-                <h2>Test</h2>
                 {this.props.todo.response.data.map(this.renderTodo)}
             </div>
         );
