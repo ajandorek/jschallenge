@@ -1,4 +1,4 @@
-import { REQUEST_TODOS, RECEIVE_TODOS, FETCH_TODOS } from '../actions/actions.js';
+import { REQUEST_TODOS, RECEIVE_TODOS, NEW_TODO } from '../actions/actions.js';
 
 export default function( state = {
     isFetching: false,
@@ -13,6 +13,10 @@ export default function( state = {
         return Object.assign({}, state, {
             isFetching: false,
             response: action.payload
+        })
+    case NEW_TODO:
+        return Object.assign({}, state, {
+            isFetching: false
         })
     }
     return state;

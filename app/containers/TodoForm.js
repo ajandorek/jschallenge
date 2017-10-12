@@ -1,28 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { createTodo } from '../actions/actions';
-import axios from 'axios';
+import { createTodo, requestTodos } from '../actions/actions';
 import request from 'superagent';
 
 import style from './App.css';
 
 class TodoForm extends Component {
+    constructor(props) {
+        super(props);
+        this.props.dispatch(requestTodos);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({ todo: nextProps.todo });
+    }
+
     handleSubmit(e) {
         var data = this.refs.todo.value;
 
         e.preventDefault();
-        request
-            .post('http://todos.stoplight.io/todos?apikey=123')
-            .send({ name: data })
-            .set('Accept', 'application/json')
-            .end(function (err, res) {
-                if (err || !res.ok) {
-                    alert('Oh no! error');
-                } else {
-                    console.log('successfully posted todo');
-                }
-            });
+        createTodo(data);
+        // request
+        //     .post('http://todos.stoplight.io/todos?apikey=123')
+        //     .send({ name: data })
+        //     .set('Accept', 'application/json')
+        //     .end(function (err, res) {
+        //         if (err || !res.ok) {
+        //             alert('Oh no! error');
+        //         } else {
+        //             requestTodos();
+        //         }
+        //     });
     }
     render() {
         return (
@@ -38,7 +47,4 @@ function mapStateToProps(state) {
     return { todo: state.todo };
 }
 
-export default reduxForm({
-    form: "TodoForm",
-    fields: ['todo']
-}, null)(TodoForm);
+export default connect(mapStateToProps)(TodoForm);

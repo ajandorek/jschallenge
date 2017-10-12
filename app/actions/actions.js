@@ -1,4 +1,5 @@
 import axios from 'axios';
+import request from 'superagent';
 
 const ROOT_URL = 'http://todos.stoplight.io/todos?apikey=123'
 
@@ -33,12 +34,27 @@ export function fetchTodos() {
     }
 }
 
-export const CREATE_TODO = 'CREATE_TODO';
-export function createTodo(props) {
-    const request = axios.post(ROOT_URL, props);
-
+export const NEW_TODO = 'NEW_TODO';
+export function newTodo() {
     return {
-        type: CREATE_TODO,
-        payload: request
+        type: NEW_TODO
     }
 }
+
+export function createTodo(todo) {
+    console.log('here');
+    return function (dispatch) {
+        dispatch(newTodo());
+        return request
+            .post('http://todos.stoplight.io/todos?apikey=123')
+            .send({ name: todo })
+            .set('Accept', 'application/json')
+            .end(function (err, res) {
+                if (err || !res.ok) {
+                    alert('Oh no! error');
+                } else {
+                    dispatch(receiveTodos(data));
+                }
+            });
+    }
+};
