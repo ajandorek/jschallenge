@@ -10,8 +10,6 @@ class Todo extends Component {
         this.props.dispatch(fetchTodos());
     }
 
-    
-
     renderTodo(data) {
         const message = data.name;
 

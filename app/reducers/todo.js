@@ -16,7 +16,8 @@ export default function( state = {
         })
     case NEW_TODO:
         return Object.assign({}, state, {
-            isFetching: false
+            isFetching: false,
+            response: action.payload
         })
     }
     return state;

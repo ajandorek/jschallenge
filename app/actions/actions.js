@@ -35,26 +35,35 @@ export function fetchTodos() {
 }
 
 export const NEW_TODO = 'NEW_TODO';
-export function newTodo() {
+export function newTodo(props) {
+    const request = axios({
+        method: 'post',
+        url: 'http://todos.stoplight.io/todos?apikey=123',
+        data: {
+            name: props
+        }
+    });
     return {
-        type: NEW_TODO
+        type: NEW_TODO,
+        payload: request
     }
 }
 
-export function createTodo(todo) {
-    console.log('here');
-    return function (dispatch) {
-        dispatch(newTodo());
-        return request
-            .post('http://todos.stoplight.io/todos?apikey=123')
-            .send({ name: todo })
-            .set('Accept', 'application/json')
-            .end(function (err, res) {
-                if (err || !res.ok) {
-                    alert('Oh no! error');
-                } else {
-                    dispatch(receiveTodos(data));
-                }
-            });
-    }
-};
+
+
+
+
+
+
+
+        // return request
+        //     .post('http://todos.stoplight.io/todos?apikey=123')
+        //     .send({ name: todo })
+        //     .set('Accept', 'application/json')
+        //     .end(function (err, res) {
+        //         if (err || !res.ok) {
+        //             alert('Oh no! error');
+        //         } else {
+        //             dispatch(fetchTodos);
+        //         }
+        //     });
